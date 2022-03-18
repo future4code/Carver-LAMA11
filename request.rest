@@ -1,0 +1,32 @@
+POST http://localhost:3000/user/signup 
+Content-Type: application/json
+
+{
+    "name": "Karen",
+    "email": "ka@email.com",
+    "password": "minhaSenha123",
+    "role": "ADMIN"
+}
+
+### 
+
+POST http://localhost:3000/user/login 
+Content-Type: application/json
+
+{
+    "email": "ka@email.com",
+    "password": "minhaSenha123",
+
+}
+
+###
+
+POST http://localhost:3000/admin/bands 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjc1YmY1LTdkZjMtNDM4My1iZDUwLWY2OTQyY2VkZjJlMCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzU2NjQzMCwiZXhwIjoxNjQ3NTcwMDMwfQ.eaLyZVJQAhWehXqr9oXT0MKU8C9ZsQZIvdGAKZxRIPc
+
+{
+    "name": "The Strokes",
+    "music_genre": "Indie Rock",
+    "responsible": "Julian Casablancas"
+}

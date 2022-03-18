@@ -1,9 +1,10 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { User } from "../model/User";
+import { BaseError } from "../error/BaseError";
 
 export class UserDatabase extends BaseDatabase {
 
-  private static TABLE_NAME = "";
+  private static TABLE_NAME = "lama_users";
 
   public async createUser(
     id: string,
@@ -22,7 +23,8 @@ export class UserDatabase extends BaseDatabase {
           role
         })
         .into(UserDatabase.TABLE_NAME);
-    } catch (error: any) {
+    } catch (error) {
+      if (error instanceof BaseError)
       throw new Error(error.sqlMessage || error.message);
     }
   }
