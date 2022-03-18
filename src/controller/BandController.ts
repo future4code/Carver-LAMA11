@@ -18,20 +18,21 @@ export class BandController {
             const bandBusiness = new BandBusiness();
             const band = await bandBusiness.createBand(input, token);
 
-            res.status(200).send({message: "Banda cadastrada com sucesso"});
+            res.status(200).send({ message: "Banda cadastrada com sucesso" });
 
         } catch (error) {
-            if (error instanceof BaseError)
-                res.status(400).send({ error: error.message });
+            const err = error as BaseError
+            res.status(400).send({ err: err.message });
         }
 
         await BaseDatabase.destroyConnection();
     }
 
-    
+
     getBandById = async (req: Request, res: Response) => {
 
         const { id } = req.params
+        const token = req.headers.authorization as string
 
         try {
             const bandBusiness = new BandBusiness();
@@ -39,8 +40,8 @@ export class BandController {
 
             res.status(201).send({ band: bandById })
         } catch (error) {
-            if (error instanceof BaseError)
-            res.status(400).send(error.message || error.sqlMessage)
+            const err = error as BaseError
+            res.status(400).send(err.message || err.sqlMessage)
         }
     }
 

@@ -9,7 +9,7 @@ export class BandDatabase extends BaseDatabase {
   public async createBand(
     id: string,
     name: string,
-    music_gender: string,
+    music_genre: string,
     responsible: string
   ): Promise<void> {
     try {
@@ -17,13 +17,13 @@ export class BandDatabase extends BaseDatabase {
         .insert({
           id,
           name,
-          music_gender,
+          music_genre,
           responsible
         })
         .into(BandDatabase.TABLE_NAME);
     } catch (error) {
-      if (error instanceof BaseError)
-      throw new Error(error.sqlMessage || error.message);
+      const err = error as BaseError 
+      throw new Error(err.sqlMessage || err.message);
     }
   }
 

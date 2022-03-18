@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
     "email": "ka@email.com",
-    "password": "minhaSenha123",
+    "password": "minhaSenha123"
 
 }
 
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/admin/bands 
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mjc1YmY1LTdkZjMtNDM4My1iZDUwLWY2OTQyY2VkZjJlMCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzU2NjQzMCwiZXhwIjoxNjQ3NTcwMDMwfQ.eaLyZVJQAhWehXqr9oXT0MKU8C9ZsQZIvdGAKZxRIPc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzYzNjE0OCwiZXhwIjoxNjQ3NzIyNTQ4fQ.VhrTKherTR36ZFjeWqzrqvDrjCr9n8Uyp9oLesRU7jM
 
 {
     "name": "The Strokes",
