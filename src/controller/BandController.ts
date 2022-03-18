@@ -10,9 +10,9 @@ export class BandController {
 
             const token = req.headers.authorization as string
             const input: BandInputDTO = {
-                music_genre: req.body.music_genre,
                 name: req.body.name,
-                responsible: req.body.responsible,
+                music_genre: req.body.music_genre,
+                responsible: req.body.responsible
             }
 
             const bandBusiness = new BandBusiness();
