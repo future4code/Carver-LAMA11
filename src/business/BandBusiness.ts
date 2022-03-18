@@ -5,7 +5,7 @@ import { BandInputDTO } from "../model/Band";
 
 export class BandBusiness {
 
-    async createBand(band: BandInputDTO) {
+    async createBand(band: BandInputDTO, token: string) {
 
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();

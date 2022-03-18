@@ -8,6 +8,7 @@ export class BandController {
     async createBand(req: Request, res: Response) {
         try {
 
+            const token = req.headers.authorization as string
             const input: BandInputDTO = {
                 music_genre: req.body.music_genre,
                 name: req.body.name,
@@ -15,9 +16,9 @@ export class BandController {
             }
 
             const bandBusiness = new BandBusiness();
-            const token = await bandBusiness.createBand(input);
+            const band = await bandBusiness.createBand(input, token);
 
-            res.status(200).send({ token });
+            res.status(200).send({message: "Banda cadastrada com sucesso"});
 
         } catch (error) {
             if (error instanceof BaseError)
@@ -25,6 +26,22 @@ export class BandController {
         }
 
         await BaseDatabase.destroyConnection();
+    }
+
+    
+    getBandById = async (req: Request, res: Response) => {
+
+        const { id } = req.params
+
+        try {
+            const bandBusiness = new BandBusiness();
+            const bandById = await bandBusiness.getBandById(id)
+
+            res.status(201).send({ band: bandById })
+        } catch (error) {
+            if (error instanceof BaseError)
+            res.status(400).send(error.message || error.sqlMessage)
+        }
     }
 
 }
