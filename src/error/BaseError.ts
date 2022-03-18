@@ -1,6 +1,5 @@
 export abstract class BaseError extends Error {
-  sqlMessage: string | undefined;
-    constructor(message: string, public code: number, sqlMessage?: string) {
+    constructor(message: string, public code: number, public sqlMessage?: string) {
       super(message);
     }
 }
