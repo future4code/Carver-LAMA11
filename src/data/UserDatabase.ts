@@ -1,6 +1,7 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { User } from "../model/User";
 import { BaseError } from "../error/BaseError";
+import { createStrictEquality } from "typescript";
 
 export class UserDatabase extends BaseDatabase {
 
@@ -23,9 +24,9 @@ export class UserDatabase extends BaseDatabase {
           role
         })
         .into(UserDatabase.TABLE_NAME);
-    } catch (error) {
-      if (error instanceof BaseError)
-      throw new Error(error.sqlMessage || error.message);
+    } catch (error) {  
+      const err = error as BaseError   
+        throw new Error(err.message || err.sqlMessage); 
     }
   }
 
@@ -34,7 +35,7 @@ export class UserDatabase extends BaseDatabase {
       .select("*")
       .from(UserDatabase.TABLE_NAME)
       .where({ email });
-
+      
     return User.toUserModel(result[0]);
   }
 
