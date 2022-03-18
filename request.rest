@@ -26,7 +26,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzYzNjE0OCwiZXhwIjoxNjQ3NzIyNTQ4fQ.VhrTKherTR36ZFjeWqzrqvDrjCr9n8Uyp9oLesRU7jM
 
 {
-    "name": "The Strokes",
+    "name": "Franz Ferdinand",
     "music_genre": "Indie Rock",
-    "responsible": "Julian Casablancas"
+    "responsible": "Alex Kapranos"
 }

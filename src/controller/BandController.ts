@@ -15,12 +15,7 @@ export class BandController {
                 responsible: req.body.responsible
             }
 
-            const bandBusiness = new BandBusiness();
-            const band = await bandBusiness.selectBandByName(input.name)
-            if (band){
-                throw new Error("Banda já registrada!")
-            }
-            
+            const bandBusiness = new BandBusiness();  
             const newBand = await bandBusiness.createBand(input, token);
 
             res.status(200).send({ message: "Banda cadastrada com sucesso" });
