@@ -22,7 +22,7 @@ export class BandDatabase extends BaseDatabase {
         })
         .into(BandDatabase.TABLE_NAME);
     } catch (error) {
-      const err = error as BaseError 
+      const err = error as BaseError
       throw new Error(err.sqlMessage || err.message);
     }
   }
@@ -35,5 +35,15 @@ export class BandDatabase extends BaseDatabase {
 
     return result[0] && Band.toUserModel(result[0]);
   }
+
+  public async selectBandByName(name: string): Promise<Band> {
+    const result = await this.getConnection()
+      .select("*")
+      .from(BandDatabase.TABLE_NAME)
+      .where({ name });
+
+    return result[0] && Band.toUserModel(result[0]);
+  }
+
 
 }

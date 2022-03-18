@@ -16,7 +16,12 @@ export class BandController {
             }
 
             const bandBusiness = new BandBusiness();
-            const band = await bandBusiness.createBand(input, token);
+            const band = await bandBusiness.selectBandByName(input.name)
+            if (band){
+                throw new Error("Banda já registrada!")
+            }
+            
+            const newBand = await bandBusiness.createBand(input, token);
 
             res.status(200).send({ message: "Banda cadastrada com sucesso" });
 
@@ -35,6 +40,7 @@ export class BandController {
         const token = req.headers.authorization as string
 
         try {
+
             const bandBusiness = new BandBusiness();
             const bandById = await bandBusiness.getBandById(id)
 
