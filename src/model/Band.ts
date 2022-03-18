@@ -2,8 +2,8 @@ export class Band{
     constructor(
     private id: string,
     private name: string,
-    private gender: string,
-    private leader: string,
+    private music_genre: string,
+    private responsible: string,
     
     ){}
 
@@ -15,12 +15,12 @@ export class Band{
         return this.name
     }
 
-    getGender(){
-        return this.gender;
+    getMusicGenre(){
+        return this.music_genre;
     }
 
-    getLeader(){
-        return this.leader;
+    getResponsible(){
+        return this.responsible;
     }
 
     setId(id: string){
@@ -31,11 +31,17 @@ export class Band{
         this.name = name;
     }
 
-    setEmail(gender: string){
-        this.gender = gender;
+    setMusicGenre(music_genre: string){
+        this.music_genre = music_genre;
     }
 
-    static toUserModel(user: any): Band {
-        return new Band(user.id, user.name, user.gender, user.leader);
+    static toUserModel(band: any): Band {
+        return new Band(band.id, band.name, band.music_genre, band.responsible);
     }
+}
+
+export interface BandInputDTO{
+    name: string;
+    music_genre: string;
+    responsible: string;
 }

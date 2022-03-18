@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { UserInputDTO, LoginInputDTO} from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDatabase } from "../data/BaseDatabase";
+import { BaseError } from "../error/BaseError";
 
 export class UserController {
     async signup(req: Request, res: Response) {
@@ -19,7 +20,8 @@ export class UserController {
 
             res.status(200).send({ token });
 
-        } catch (error: any) {
+        } catch (error) {
+            if (error instanceof BaseError)
             res.status(400).send({ error: error.message });
         }
 
@@ -40,7 +42,8 @@ export class UserController {
 
             res.status(200).send({ token });
 
-        } catch (error: any) {
+        } catch (error) {
+            if (error instanceof BaseError)
             res.status(400).send({ error: error.message });
         }
 
