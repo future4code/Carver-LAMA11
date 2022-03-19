@@ -16,9 +16,13 @@ export class BandBusiness {
             throw new Error("Usuário não permitido")
         }
 
+        if (!token) {
+            throw new Error("Token inválido ou não passado nos headers")
+        }
+
         const bandBusiness = new BandBusiness();
         const newBand = await bandBusiness.selectBandByName(band.name)
-        if (newBand){
+        if (newBand) {
             throw new Error("Banda já registrada!")
         }
 
@@ -36,13 +40,18 @@ export class BandBusiness {
 
     async getBandById(id: string) {
 
+        if (!id) {
+            throw new Error("Id inválido ou não passado nos params")
+        }
+
         const bandDatabase = new BandDatabase();
-        const bandFromDB = await bandDatabase.getBandById(id);
+        const result = await bandDatabase.getBandById(id);
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: bandFromDB.getId() });
+        if (!result) {
+            throw new Error("Id inválido ou Post não encontrado")
+        }
 
-        return accessToken;
+        return result;
     }
 
     async selectBandByName(name: string) {
