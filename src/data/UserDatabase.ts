@@ -24,9 +24,9 @@ export class UserDatabase extends BaseDatabase {
           role
         })
         .into(UserDatabase.TABLE_NAME);
-    } catch (error) {  
-      const err = error as BaseError   
-        throw new Error(err.message || err.sqlMessage); 
+    } catch (error) {
+      const err = error as BaseError
+      throw new Error(err.message || err.sqlMessage);
     }
   }
 
@@ -35,7 +35,7 @@ export class UserDatabase extends BaseDatabase {
       .select("*")
       .from(UserDatabase.TABLE_NAME)
       .where({ email });
-      
+
     return User.toUserModel(result[0]);
   }
 

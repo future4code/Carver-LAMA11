@@ -8,6 +8,17 @@ export class UserBusiness {
 
     async createUser(user: UserInputDTO) {
 
+        if(!user.name || !user.email || !user.password || !user.role){
+            throw new Error("Preencha todos os campos")
+        }
+
+        // const userBusiness = new UserBusiness();
+        // const newUser = await userBusiness.getUserByEmail(user.email)
+        // if(newUser){
+        //     throw new Error("E-mail já cadastrado!")
+        // }
+
+
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();
 
@@ -35,7 +46,7 @@ export class UserBusiness {
         const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
 
         if (!hashCompare) {
-            throw new Error("Invalid Password!");
+            throw new Error("Senha inválida!");
         }
 
         return accessToken;
