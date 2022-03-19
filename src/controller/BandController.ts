@@ -15,7 +15,7 @@ export class BandController {
                 responsible: req.body.responsible
             }
 
-            const bandBusiness = new BandBusiness();  
+            const bandBusiness = new BandBusiness();
             const newBand = await bandBusiness.createBand(input, token);
 
             res.status(200).send({ message: "Banda cadastrada com sucesso" });

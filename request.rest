@@ -30,3 +30,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgt
     "music_genre": "Indie Rock",
     "responsible": "Alex Kapranos"
 }
+
+###
+
+GET http://localhost:3000/admin/band/02108654-762b-4b39-9eed-978e6a3a1301 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzcyNTA0OSwiZXhwIjoxNjQ3ODExNDQ5fQ.EoKA694fxvRnLhWtaSx8r-Sw_Iob3xPD9T4Sw8jOA3M
