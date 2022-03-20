@@ -6,6 +6,13 @@ import { UserRole } from "../model/User";
 
 export class BandBusiness {
 
+    constructor(
+        private idGenerator: IdGenerator,
+        private authenticator: Authenticator,
+        private bandDatabase: BandDatabase,
+        private bandBusiness: BandBusiness
+    ) { }
+
     async createBand(band: BandInputDTO, token: string) {
 
         if (!band.name || !band.music_genre || !band.responsible) {
@@ -20,20 +27,16 @@ export class BandBusiness {
             throw new Error("Token inválido ou não passado nos headers")
         }
 
-        const bandBusiness = new BandBusiness();
-        const newBand = await bandBusiness.selectBandByName(band.name)
+        const newBand = await this.bandBusiness.selectBandByName(band.name)
         if (newBand) {
             throw new Error("Banda já registrada!")
         }
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
+        const id = this.idGenerator.generate();
 
-        const bandDatabase = new BandDatabase();
-        await bandDatabase.createBand(id, band.name, band.music_genre, band.responsible);
+        await this.bandDatabase.createBand(id, band.name, band.music_genre, band.responsible);
 
-        const authenticator = new Authenticator();
-        const tokenData = authenticator.getData(token);
+        const tokenData = this.authenticator.getData(token);
 
         return tokenData;
     }
@@ -48,11 +51,9 @@ export class BandBusiness {
             throw new Error("Id inválido ou não passado nos params")
         }
 
-        const bandDatabase = new BandDatabase();
-        const result = await bandDatabase.getBandById(id);
+        const result = await this.bandDatabase.getBandById(id);
 
-        // const authenticator = new Authenticator();
-        // const tokenData = authenticator.getData(token);
+        // const tokenData = this.authenticator.getData(token);
 
         if (!result) {
             throw new Error("Id inválido ou Post não encontrado")
@@ -63,8 +64,7 @@ export class BandBusiness {
 
     async selectBandByName(name: string) {
 
-        const bandDatabase = new BandDatabase();
-        const bandFromDB = await bandDatabase.selectBandByName(name);
+        const bandFromDB = await this.bandDatabase.selectBandByName(name);
 
         return bandFromDB;
     }
