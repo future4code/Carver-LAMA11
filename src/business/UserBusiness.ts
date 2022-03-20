@@ -12,12 +12,13 @@ export class UserBusiness {
             throw new Error("Preencha todos os campos")
         }
 
-        // const userBusiness = new UserBusiness();
-        // const newUser = await userBusiness.getUserByEmail(user.email)
-        // if(newUser){
-        //     throw new Error("E-mail já cadastrado!")
-        // }
+        if (user.password.length < 6){
+            throw new Error ("Senha deve conter o mínimo de 6 caracteres")
+        }
 
+        if(user.email.indexOf("@") === -1){
+            throw new Error("Email inválido");
+        }
 
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();

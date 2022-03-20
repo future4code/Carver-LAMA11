@@ -2,10 +2,10 @@ POST http://localhost:3000/user/signup
 Content-Type: application/json
 
 {
-    "name": "Karen",
-    "email": "ka@email.com",
+    "name": "Melissa",
+    "email": "mel@email.com",
     "password": "minhaSenha123",
-    "role": "ADMIN"
+    "role": "NORMAL"
 }
 
 ### 
@@ -36,3 +36,15 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgt
 GET http://localhost:3000/admin/band/02108654-762b-4b39-9eed-978e6a3a1301 
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzcyNTA0OSwiZXhwIjoxNjQ3ODExNDQ5fQ.EoKA694fxvRnLhWtaSx8r-Sw_Iob3xPD9T4Sw8jOA3M
+
+###
+
+POST http://localhost:3000/show/register 
+Content-Type: application/json
+
+{
+    "band_id": "02108654-762b-4b39-9eed-978e6a3a1301",
+    "week_day": "DOMINGO",
+    "start_time": "21",
+    "end_time": "23"
+}
