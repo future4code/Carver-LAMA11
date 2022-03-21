@@ -5,4 +5,5 @@ export const showRouter = express.Router()
 
 const showController = new ShowController()
 
+showRouter.get("/search/:weekday", showController.search)
 showRouter.post("/register", showController.create)

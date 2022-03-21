@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { ShowBusiness } from "../business/ShowBusiness"
 import { BaseError } from "../error/BaseError"
-import { ShowInputDTO } from "../model/Show"
+import { ShowInputDTO, WeekDay } from "../model/Show"
 
 export class ShowController{
   async create(req: Request, res: Response) {
@@ -18,6 +18,21 @@ export class ShowController{
       res.send({message: "Show criado com sucesso!"})
 
     } catch(error){
+      const err = error as BaseError
+      res.status(400).send({error: err.message})
+    }
+  }
+
+  async search(req: Request, res: Response){
+    try {
+      const { weekday } = req.params
+
+      const showBusiness = new ShowBusiness()
+      const result = await showBusiness.searchShow(weekday)
+
+      res.send({result})
+      
+    } catch (error) {
       const err = error as BaseError
       res.status(400).send({error: err.message})
     }

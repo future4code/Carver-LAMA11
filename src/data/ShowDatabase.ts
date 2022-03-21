@@ -4,7 +4,8 @@ import { Show, } from "../model/Show";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ShowDatabase extends BaseDatabase {
-  private static TABLE_NAME = "lama_shows"
+  private static TABLE_SHOWS = "lama_shows"
+  private static TABLE_BANDS = "lama_bands"
 
   public async findShowByTime(week_day: string, start_time: number, end_time: number) {
     try {
@@ -13,9 +14,11 @@ export class ShowDatabase extends BaseDatabase {
         .orderBy("week_day")
         .where("week_day", `${week_day}`)
         .whereBetween("start_time", [`${start_time}`, `${end_time}`])
-        .from(ShowDatabase.TABLE_NAME)
+        .from(ShowDatabase.TABLE_SHOWS)
+      
       
       return result[0]
+      
 
     } catch (error) {
       const err = error as BaseError
@@ -23,13 +26,14 @@ export class ShowDatabase extends BaseDatabase {
     }
   }
 
-  public async findShowByEndTime() {
+  public async findShowByWeekday(weekday: string) {
     try {
       const result = await this.getConnection()
-        .select("start_time", "end_time", "week_day")
-        .orderBy("week_day")
-        // .where( )
-        .from(ShowDatabase.TABLE_NAME)
+        .select("lama_bands.name as band", "lama_bands.music_genre as genre", "lama_shows.week_day as weekday")
+        .from(ShowDatabase.TABLE_BANDS)
+        .join(ShowDatabase.TABLE_SHOWS, "lama_bands.id", "lama_shows.band_id")
+        .orderBy("lama_shows.start_time")
+        .where("week_day", `${weekday}`)
       
       return result
 
@@ -50,7 +54,7 @@ export class ShowDatabase extends BaseDatabase {
         .insert({
           id, week_day, start_time, end_time, band_id
         })
-        .into(ShowDatabase.TABLE_NAME)
+        .into(ShowDatabase.TABLE_SHOWS)
 
     } catch (error) {
       const err = error as BaseError
