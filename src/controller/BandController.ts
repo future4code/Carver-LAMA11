@@ -37,7 +37,7 @@ export class BandController {
         try {
 
             const bandBusiness = new BandBusiness();
-            const bandById = await bandBusiness.getBandById(id)
+            const bandById = await bandBusiness.getBandById(id, token)
 
             res.status(201).send({ band: bandById })
         } catch (error) {

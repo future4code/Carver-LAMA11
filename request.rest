@@ -23,12 +23,12 @@ Content-Type: application/json
 
 POST http://localhost:3000/admin/bands 
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzYzNjE0OCwiZXhwIjoxNjQ3NzIyNTQ4fQ.VhrTKherTR36ZFjeWqzrqvDrjCr9n8Uyp9oLesRU7jM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzgyMjA0MSwiZXhwIjoxNjQ3OTA4NDQxfQ.3SdUBU-gMMiJyU8RhFj4cNOLQy4-RIVhP70D5lLO5VE
 
 {
-    "name": "Franz Ferdinand",
+    "name": "Florence + The Machine",
     "music_genre": "Indie Rock",
-    "responsible": "Alex Kapranos"
+    "responsible": "Florence Welch"
 }
 
 ###
@@ -45,6 +45,6 @@ Content-Type: application/json
 {
     "band_id": "02108654-762b-4b39-9eed-978e6a3a1301",
     "week_day": "DOMINGO",
-    "start_time": "21",
-    "end_time": "23"
+    "start_time": "21:00",
+    "end_time": "23:00"
 }
