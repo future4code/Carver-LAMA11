@@ -16,10 +16,8 @@ export class ShowDatabase extends BaseDatabase {
         .whereBetween("start_time", [`${start_time}`, `${end_time}`])
         .from(ShowDatabase.TABLE_SHOWS)
       
-      
       return result[0]
       
-
     } catch (error) {
       const err = error as BaseError
       throw new Error(err.message || err.sqlMessage);
@@ -29,7 +27,7 @@ export class ShowDatabase extends BaseDatabase {
   public async findShowByWeekday(weekday: string) {
     try {
       const result = await this.getConnection()
-        .select("lama_bands.name as band", "lama_bands.music_genre as genre", "lama_shows.week_day as weekday")
+        .select("lama_bands.name as band", "lama_bands.music_genre as genre")
         .from(ShowDatabase.TABLE_BANDS)
         .join(ShowDatabase.TABLE_SHOWS, "lama_bands.id", "lama_shows.band_id")
         .orderBy("lama_shows.start_time")
