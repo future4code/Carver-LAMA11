@@ -12,9 +12,8 @@ Esse projeto consiste em criar uma API que simula o registro de usuários, banda
 <li> Login de usuário
 <li> Cadastro de banda, feita por usuário com permissão "admin".
 <li> Busca de banda pelo ID, feita por usuário com permissão "admin"
-<li> 
-<li> 
-<li> 
+<li> Cadastro de data de show, feita por usuário com permissão "admin".
+<li> Busca de show pelo dia da semana, feita por usuário "normal".
 
 
 ## Tecnologias utilizadas:
@@ -30,4 +29,5 @@ Esse projeto consiste em criar uma API que simula o registro de usuários, banda
 
 ## Documentação do Postman
 
+https://documenter.getpostman.com/view/18385963/UVsPQQnH
 
