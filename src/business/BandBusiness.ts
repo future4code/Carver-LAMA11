@@ -38,10 +38,14 @@ export class BandBusiness {
         return tokenData;
     }
 
-    async getBandById(id: string) {
+    async getBandById(id: string, token: string) {
 
         if (!id) {
             throw new Error("Id inválido ou não passado nos params")
+        }
+
+        if (!token) {
+            throw new Error("Token inválido ou não passado nos headers")
         }
 
         const bandDatabase = new BandDatabase();
@@ -50,6 +54,9 @@ export class BandBusiness {
         if (!result) {
             throw new Error("Id inválido ou Post não encontrado")
         }
+
+        const authenticator = new Authenticator();
+        const tokenData = authenticator.getData(token);
 
         return result;
     }

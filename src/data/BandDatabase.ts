@@ -44,6 +44,4 @@ export class BandDatabase extends BaseDatabase {
 
     return result[0] && Band.toUserModel(result[0]);
   }
-
-
 }
