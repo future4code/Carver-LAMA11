@@ -1,0 +1,50 @@
+POST http://localhost:3000/user/signup 
+Content-Type: application/json
+
+{
+    "name": "Melissa",
+    "email": "mel@email.com",
+    "password": "minhaSenha123",
+    "role": "NORMAL"
+}
+
+### 
+
+POST http://localhost:3000/user/login 
+Content-Type: application/json
+
+{
+    "email": "ka@email.com",
+    "password": "minhaSenha123"
+
+}
+
+###
+
+POST http://localhost:3000/admin/bands 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzgyMjA0MSwiZXhwIjoxNjQ3OTA4NDQxfQ.3SdUBU-gMMiJyU8RhFj4cNOLQy4-RIVhP70D5lLO5VE
+
+{
+    "name": "Florence + The Machine",
+    "music_genre": "Indie Rock",
+    "responsible": "Florence Welch"
+}
+
+###
+
+GET http://localhost:3000/admin/band/02108654-762b-4b39-9eed-978e6a3a1301 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1OTM2OGQ5LWVjMjgtNDE2MS05YjRmLTRjYzVlZTIzOTEwNiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY0NzczNjM5NCwiZXhwIjoxNjQ3ODIyNzk0fQ.GY_t3FadbiNFJVGhySF44P_HqJoFgfVMl1JvjiSSPa8
+
+###
+
+POST http://localhost:3000/show/register 
+Content-Type: application/json
+
+{
+    "band_id": "02108654-762b-4b39-9eed-978e6a3a1301",
+    "week_day": "DOMINGO",
+    "start_time": "21:00",
+    "end_time": "23:00"
+}
